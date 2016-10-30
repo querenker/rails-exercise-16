@@ -17,4 +17,8 @@ describe "Authors new page", :type => :feature do
     expect(page).to have_field("Homepage")
   end
 
+  it "should display button to submit form labeled with 'Create Author'" do
+    visit "/authors/new"
+    expect(page).to have_button("Create Author")
+  end
 end
