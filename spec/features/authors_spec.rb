@@ -12,4 +12,9 @@ describe "Authors new page", :type => :feature do
     expect(page).to have_field("Last name")
   end
 
+  it "should display text input for homepage" do
+    visit "/authors/new"
+    expect(page).to have_field("Homepage")
+  end
+
 end
