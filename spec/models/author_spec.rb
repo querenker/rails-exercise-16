@@ -12,4 +12,9 @@ RSpec.describe Author, type: :model do
 	expect(@author.name).to eq("Alan Turing")
   end
 
+  it "should not be invalid without last name" do
+	@author = build(:author, last_name: nil)
+	expect(@author).to be_invalid
+  end
+
 end
