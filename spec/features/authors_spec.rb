@@ -44,11 +44,21 @@ describe "Authors show page", :type => :feature do
     expect(page).to have_text(author.homepage)
   end
 
+end
+
+
+describe "Authors show page", :type => :feature do
+
   it "should show details of an author" do
     author = FactoryGirl.create(:author)
     visit '/authors'
     expect(page).to have_text(author.name)
     expect(page).to have_text(author.homepage)
+  end
+
+  it "should have a link to the new author page" do
+    visit '/authors'
+	expect(page).to have_link('add author')
   end
 
 end
