@@ -2,12 +2,14 @@
   <tr>
     <th>Name</th>
 	<th>Homepage</th>
+	<th>Detail View</th>
   </tr>
 
 <% @authors.each do |author| %>
   <tr>
     <th><%= author.name %></th>
 	<th><%= author.homepage %></th>
+	<th><a href="/authors/<%= author.id %>">show</a></th>
   </tr>
 <% end %>
 
