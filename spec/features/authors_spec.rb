@@ -47,7 +47,7 @@ describe "Authors show page", :type => :feature do
 end
 
 
-describe "Authors show page", :type => :feature do
+describe "Authors index page", :type => :feature do
 
   it "should show details of an author" do
     author = FactoryGirl.create(:author)
@@ -59,6 +59,12 @@ describe "Authors show page", :type => :feature do
   it "should have a link to the new author page" do
     visit '/authors'
 	expect(page).to have_link('Add author')
+  end
+
+  it "should have for each author listed a link to the detailed view of that author" do
+    author = FactoryGirl.create(:author)
+    visit '/authors'
+    expect(page).to have_link('show')
   end
 
 end
