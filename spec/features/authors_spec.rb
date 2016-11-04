@@ -64,7 +64,7 @@ describe "Authors index page", :type => :feature do
   it "should have for each author listed a link to the detailed view of that author" do
     author = FactoryGirl.create(:author)
     visit '/authors'
-    expect(page).to have_link('show')
+    expect(page).to have_link('Show')
   end
 
 end
