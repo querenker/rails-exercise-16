@@ -48,10 +48,11 @@ end
 
 describe "Authors show page", :type => :feature do
 
-  it "should show the name of an author" do
+  it "should show details of an author" do
     author = FactoryGirl.create(:author)
     visit '/authors'
     expect(page).to have_text(author.name)
+    expect(page).to have_text(author.homepage)
   end
 
 end
