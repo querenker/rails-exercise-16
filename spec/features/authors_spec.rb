@@ -58,7 +58,7 @@ describe "Authors show page", :type => :feature do
 
   it "should have a link to the new author page" do
     visit '/authors'
-	expect(page).to have_link('add author')
+	expect(page).to have_link('Add author')
   end
 
 end
