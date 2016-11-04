@@ -23,13 +23,13 @@ describe "Authors new page", :type => :feature do
   end
 
   it "should exist a database entry for a author which was submitted via the new author form" do
-	@author = {first_name: 'Alan', last_name: 'Turing', homepage: 'http://wikipedia.org/Alan_Turing'}
+    author = FactoryGirl.create(:author)
     visit '/authors/new'
-    fill_in 'First name', with: @author[:first_name]
-    fill_in 'Last name', with: @author[:last_name]
-    fill_in 'Homepage', with: @author[:homepage]
+	fill_in 'First name', with: author.first_name
+	fill_in 'Last name', with: author.last_name
+	fill_in 'Homepage', with: author.homepage
 	click_button 'Create Author'
-    expect(Author.where(first_name: @author[:first_name], last_name: @author[:last_name])).to exist
+	expect(Author.where(first_name: author.first_name, last_name: author.last_name)).to exist
   end
 
 end
@@ -43,10 +43,6 @@ describe "Authors show page", :type => :feature do
     expect(page).to have_text(author.last_name)
     expect(page).to have_text(author.homepage)
   end
-
-end
-
-describe "Authors show page", :type => :feature do
 
   it "should show details of an author" do
     author = FactoryGirl.create(:author)
