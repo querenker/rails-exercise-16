@@ -21,4 +21,15 @@ describe "Authors new page", :type => :feature do
     visit "/authors/new"
     expect(page).to have_button("Create Author")
   end
+
+  it "should exist a database entry for a author which was submitted via the new author form" do
+	@author = {first_name: "Alan", last_name: "Turing", homepage: "http://wikipedia.org/Alan_Turing"}
+    visit "/authors/new"
+    fill_in 'First name', with: @author[:first_name]
+    fill_in 'Last name', with: @author[:last_name]
+    fill_in 'Homepage', with: @author[:homepage]
+	click_button 'Create Author'
+    expect(Author.where(first_name: @author[:first_name], last_name: @author[:last_name])).to exist
+  end
+
 end
