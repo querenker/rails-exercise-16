@@ -41,6 +41,7 @@ describe "Authors show page", :type => :feature do
     visit "/authors/#{author.id}"
     expect(page).to have_text(author.first_name)
     expect(page).to have_text(author.last_name)
+    expect(page).to have_text(author.homepage)
   end
 
 end
