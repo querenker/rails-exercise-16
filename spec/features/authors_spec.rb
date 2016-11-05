@@ -89,5 +89,6 @@ describe "Authors index page", :type => :feature do
     click_button 'Edit Author'
 	visit "/authors/#{author.id}"
 	expect(page).to have_text{new_first_name}
+	expect(Author.where(first_name: new_first_name, last_name: author.last_name)).to exist
   end
 end

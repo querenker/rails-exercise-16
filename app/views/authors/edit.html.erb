@@ -1,1 +1,27 @@
+<h1>Edit Author</h1>
 
+<%= form_for @author do |f| %>
+
+  <% if @author.errors.any? %>
+    <% @author.errors.full_messages.each do |message| %>
+      <%= message %>
+	<% end %>
+  <% end %>
+  
+  <p>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </p>
+  <p>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </p>
+  <p>
+    <%= f.label :homepage %><br>
+    <%= f.text_field :homepage %>
+  </p>
+  <p>
+    <%= f.submit "Edit Author" %><br>
+  </p>
+
+<% end %>
