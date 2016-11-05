@@ -21,6 +21,10 @@ class AuthorsController < ApplicationController
     end
   end
 
+  def edit
+    @author = Author.find(params[:id])
+  end
+
   private
 
   def author_params
