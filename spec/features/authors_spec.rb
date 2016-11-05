@@ -78,3 +78,16 @@ describe "Authors index page", :type => :feature do
   end
 
 end
+
+
+describe "Authors index page", :type => :feature do
+  it "should update the author database entry" do
+    author = FactoryGirl.create(:author)
+	new_first_name = 'Alan Mathison'
+    visit "/authors/#{author.id}/edit"
+    fill_in 'First name', with: new_first_name
+    click_button 'Edit Author'
+	visit "/authors/#{author.id}"
+	expect(page).to have_text{new_first_name}
+  end
+end
