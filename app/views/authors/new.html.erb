@@ -1,6 +1,13 @@
 <h1>New Author</h1>
 
 <%= form_for :author, url: authors_path do |f| %>
+
+  <% if @author.errors.any? %>
+    <% @author.errors.full_messages.each do |message| %>
+      <%= message %>
+	<% end %>
+  <% end %>
+  
   <p>
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>
@@ -16,4 +23,5 @@
   <p>
     <%= f.submit "Create Author" %><br>
   </p>
+
 <% end %>
