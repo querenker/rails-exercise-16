@@ -77,10 +77,17 @@ describe "Authors index page", :type => :feature do
     expect(page).to have_link('Show')
   end
 
+  it "should have for each author listed a link to the detailed view of that author" do
+    author = FactoryGirl.create(:author)
+    visit '/authors'
+    expect(page).to have_link('Edit')
+  end
+
 end
 
 
-describe "Authors index page", :type => :feature do
+describe "Authors edit page", :type => :feature do
+
   it "should update the author database entry" do
     author = FactoryGirl.create(:author)
 	new_first_name = 'Alan Mathison'
@@ -91,4 +98,5 @@ describe "Authors index page", :type => :feature do
 	expect(page).to have_text{new_first_name}
 	expect(Author.where(first_name: new_first_name, last_name: author.last_name)).to exist
   end
+
 end
