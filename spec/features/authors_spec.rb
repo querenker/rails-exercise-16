@@ -32,6 +32,15 @@ describe "Authors new page", :type => :feature do
 	expect(Author.where(first_name: author.first_name, last_name: author.last_name)).to exist
   end
 
+  it "should report that last name can't be blank" do
+    author = FactoryGirl.create(:author)
+	visit '/authors/new'
+	fill_in 'First name', with: author.first_name
+	fill_in 'Homepage', with: author.homepage
+	click_button 'Create Author'
+	expect(page).to have_text("Last name can't be blank")
+  end
+
 end
 
 describe "Authors show page", :type => :feature do
