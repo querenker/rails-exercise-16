@@ -43,6 +43,7 @@ describe "Authors new page", :type => :feature do
 
 end
 
+
 describe "Authors show page", :type => :feature do
 
   it "should show details of an author" do
