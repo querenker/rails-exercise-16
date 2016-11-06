@@ -1,5 +1,5 @@
 class Paper < ActiveRecord::Base
 
-  validates :title, :venue, presence: true
+  validates :title, :venue, :year, presence: true
 
 end
