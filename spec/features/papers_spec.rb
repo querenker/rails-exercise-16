@@ -30,3 +30,18 @@ describe "Papers index page", :type => :feature do
   end
 
 end
+
+describe "Authors edit page", :type => :feature do
+
+  it "should update the author database entry" do
+    paper = FactoryGirl.create(:paper)
+	new_title = 'Hello World'
+    visit "/papers/#{paper.id}/edit"
+    fill_in 'Title', with: new_title
+    click_button 'Edit Paper'
+	visit "/papers/#{paper.id}"
+	expect(page).to have_text{new_title}
+	expect(Paper.where(title: new_title, venue: paper.venue)).to exist
+  end
+
+end
