@@ -1,0 +1,26 @@
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+<table>
+  <tr>
+    <th>Title</th>
+	<th>Venue</th>
+	<th>Year</th>
+	<th>Show Paper</th>
+	<th>Edit Paper</th>
+	<th>Delete Paper</th>
+  </tr>
+
+<% @papers.each do |paper| %>
+  <tr>
+    <td><%= paper.title %></td>
+	<td><%= paper.venue %></td>
+	<td><%= paper.year %></td>
+	<!-- <td><%= link_to 'Show', paper_path(paper) %></td>
+	<td><%= link_to 'Edit', edit_paper_path(paper) %></td>
+	<td><%= link_to 'Destroy', paper_path(paper), method: :delete %></td> -->
+  </tr>
+<% end %>
+
+</table>
+
+<a href="/papers/new">Add paper</a>
