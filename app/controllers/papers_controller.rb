@@ -13,7 +13,7 @@ class PapersController < ApplicationController
   end
 
   def create
-    @paper = Paper.new(author_params)
+    @paper = Paper.new(paper_params)
 	if @paper.save
 	  redirect_to @paper
     else
@@ -21,9 +21,22 @@ class PapersController < ApplicationController
     end
   end
 
+  def edit
+    @paper = Paper.find(params[:id])
+  end
+
+  def update
+    @paper = Paper.find(params[:id])
+    if @paper.update(paper_params)
+	  redirect_to @paper
+    else
+      render 'edit'
+    end
+  end
+
   private
 
-  def author_params
+  def paper_params
 	params.require(:paper).permit(:title, :venue, :year)
   end
 
