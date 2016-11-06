@@ -23,4 +23,10 @@ describe "Papers index page", :type => :feature do
 	expect(page).to have_text(paper.year)
   end
 
+  it "should have for each paper listed a link to the detailed view of that paper" do
+    paper = FactoryGirl.create(:paper)
+    visit '/papers'
+    expect(page).to have_link('Show')
+  end
+
 end
