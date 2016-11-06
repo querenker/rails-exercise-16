@@ -77,10 +77,16 @@ describe "Authors index page", :type => :feature do
     expect(page).to have_link('Show')
   end
 
-  it "should have for each author listed a link to the detailed view of that author" do
+  it "should have for each author listed a link to the edit view of that author" do
     author = FactoryGirl.create(:author)
     visit '/authors'
     expect(page).to have_link('Edit')
+  end
+
+  it "should have for each author listed a link to delete that author" do
+    author = FactoryGirl.create(:author)
+    visit '/authors'
+    expect(page).to have_link('Destroy')
   end
 
 end
