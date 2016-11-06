@@ -22,4 +22,9 @@ RSpec.describe Paper, type: :model do
 	expect(@paper).to be_invalid
   end
 
+  it "should have an empty list of authors when created" do
+    @paper = build(:paper)
+	expect(@paper.authors).to be_empty
+  end
+
 end
