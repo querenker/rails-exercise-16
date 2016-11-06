@@ -12,4 +12,9 @@ RSpec.describe Paper, type: :model do
 	expect(@paper).to be_invalid
   end
 
+  it "should be invalid without venue" do
+	@paper = build(:paper, year: nil)
+	expect(@paper).to be_invalid
+  end
+
 end
