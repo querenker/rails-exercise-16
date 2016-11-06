@@ -29,6 +29,12 @@ describe "Papers index page", :type => :feature do
     expect(page).to have_link('Show')
   end
 
+  it "should have for each paper listed a link to delete that paper" do
+    paper = FactoryGirl.create(:paper)
+    visit '/papers'
+    expect(page).to have_link('Destroy')
+  end
+
 end
 
 describe "Authors edit page", :type => :feature do
