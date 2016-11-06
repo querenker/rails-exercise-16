@@ -7,4 +7,9 @@ RSpec.describe Paper, type: :model do
 	expect(@paper).to be_invalid
   end
 
+  it "should be invalid without venue" do
+	@paper = build(:paper, venue: nil)
+	expect(@paper).to be_invalid
+  end
+
 end
