@@ -10,6 +10,14 @@ describe "Papers show page", :type => :feature do
 	expect(page).to have_text(paper.year)
   end
 
+  it "should show author of an paper" do
+    paper = FactoryGirl.create(:paper)
+    visit "/papers/#{paper.id}"
+	paper.authors.each do |author|
+		expect(page).to have_text(author.name)
+    end
+  end
+
 end
 
 
@@ -37,9 +45,9 @@ describe "Papers index page", :type => :feature do
 
 end
 
-describe "Authors edit page", :type => :feature do
+describe "Papers edit page", :type => :feature do
 
-  it "should update the author database entry" do
+  it "should update the paper database entry" do
     paper = FactoryGirl.create(:paper)
 	new_title = 'Hello World'
     visit "/papers/#{paper.id}/edit"
