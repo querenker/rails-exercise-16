@@ -43,6 +43,14 @@ describe "Papers index page", :type => :feature do
     expect(page).to have_link('Destroy')
   end
 
+  it "should filter the papers listed by year" do
+     paper = FactoryGirl.create(:paper)
+	 new_paper = FactoryGirl.create(:new_paper)
+	 visit papers_path(year: 1950)
+	 expect(page).to have_text(paper.title)
+	 expect(page).not_to have_text(new_paper.title)
+  end
+
 end
 
 describe "Papers edit page", :type => :feature do
