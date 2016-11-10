@@ -66,4 +66,10 @@ describe "Papers edit page", :type => :feature do
     end
   end
 
+  it "should pre-select the actual author in the top down" do
+    paper = FactoryGirl.create(:paper)
+	visit "papers/#{paper.id}/edit"
+	expect(page).to have_select('paper_author_id_1', selected: paper.authors.first.name)
+  end
+
 end
