@@ -72,4 +72,13 @@ describe "Papers edit page", :type => :feature do
 	expect(page).to have_select('paper_author_id_1', selected: paper.authors.first.name)
   end
 
+  it "should save author changes" do
+    paper = FactoryGirl.create(:paper)
+	new_author = FactoryGirl.create(:new_author)
+	visit "papers/#{paper.id}/edit"
+	select new_author.name, from: 'paper_author_id_1'
+	click_button 'Edit Paper'
+	expect(Paper.find(paper.id).authors).to include(new_author)
+  end
+
 end
