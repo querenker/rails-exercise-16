@@ -1,3 +1,7 @@
 Title: <%= @paper.title =%><br>
 Venue: <%= @paper.venue =%><br>
 Year: <%= @paper.year =%><br>
+
+<% @paper.authors.each do |author| %>
+  Author: <%= author.name =%>
+<% end %>
