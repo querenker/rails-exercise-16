@@ -57,5 +57,13 @@ describe "Papers edit page", :type => :feature do
 	expect(page).to have_text{new_title}
 	expect(Paper.where(title: new_title, venue: paper.venue)).to exist
   end
+  
+  it "should allow to select 5 authors from 5 seperate drop downs" do
+    paper = FactoryGirl.create(:paper)
+	visit "/papers/#{paper.id}/edit"
+	(1..5).each do |i|
+		expect(page).to have_select("paper_author_id_#{i}")
+    end
+  end
 
 end
